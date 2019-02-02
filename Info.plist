@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>tomocy</string>
+	<key>Builder Version</key>
+	<string>14606.3.4</string>
+	<key>CFBundleDisplayName</key>
+	<string>open-in-sourcegraph</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.tomocy.open-in-sourcegraph</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Global Page</key>
+		<string>index.html</string>
+		<key>Toolbar Items</key>
+		<array>
+			<dict>
+				<key>Command</key>
+				<string>open</string>
+				<key>Identifier</key>
+				<string>open in sourcegraph</string>
+				<key>Image</key>
+				<string>icon.png</string>
+				<key>Include By Default</key>
+				<true/>
+				<key>Label</key>
+				<string>open in sourcegraph</string>
+			</dict>
+		</array>
+	</dict>
+	<key>Companion Bundle Identifier</key>
+	<array>
+		<string>tomocyddd</string>
+	</array>
+	<key>Description</key>
+	<string>Open a link in sourcegraph</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>All</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

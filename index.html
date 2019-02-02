@@ -1,0 +1,22 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Open in sourcegraph</title>
+</head>
+
+<body>
+    <script>
+        safari.application.addEventListener("command", openInSourcegraph, false)
+        function openInSourcegraph(event) {
+            if (event.command != "open") {
+                return
+            }
+            var title = event.target.browserWindow.activeTab.title
+            var dst = "https://sourcegraph.com/github.com/" + title
+            event.target.browserWindow.activeTab.url = dst
+        }
+    </script>
+</body>
+
+</html>
