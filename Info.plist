@@ -38,7 +38,7 @@
 	</dict>
 	<key>Companion Bundle Identifier</key>
 	<array>
-		<string>tomocyddd</string>
+		<string>tomocy</string>
 	</array>
 	<key>Description</key>
 	<string>Open a link in sourcegraph</string>
@@ -54,5 +54,9 @@
 			<string>All</string>
 		</dict>
 	</dict>
+	<key>Update Manifest URL</key>
+	<string>https://github.com/tomocy/open-in-sourcegraph</string>
+	<key>Website</key>
+	<string>https://github.com/tomocy/open-in-sourcegraph</string>
 </dict>
 </plist>
