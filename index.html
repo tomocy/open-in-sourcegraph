@@ -24,10 +24,10 @@
 
         parseURL(url) {
             const parts = url.split('/')
+            const [, , host, author, name, ...paths] = parts
             this.host = parts[2]
             this.author = parts[3]
             this.name = parts[4]
-            const paths = parts.slice(5)
             const branchContainer = paths.splice(1, 1)
             this.branch = branchContainer.length === 1 ? branchContainer[0] : ""
             this.path = paths.join('/')
