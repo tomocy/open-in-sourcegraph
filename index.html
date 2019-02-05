@@ -5,8 +5,8 @@
         if (event.command != 'open') {
             return
         }
-        var url = event.target.browserWindow.activeTab.url
-        var repository = new Repository(url)
+        const url = event.target.browserWindow.activeTab.url
+        const repository = new Repository(url)
         if (!repository.isAvailableOnSourcegraph()) {
             return
         }
@@ -18,16 +18,17 @@
     }
 
     Repository.prototype.parseURL = function (url) {
-        var parts = url.split('/')
+        const parts = url.split('/')
         this.host = parts[2]
         this.author = parts[3]
         this.name = parts[4]
-        var paths = parts.slice(5)
-        this.branch = paths.splice(1, 1)[0]
+        const paths = parts.slice(5)
+        const branchContainer = paths.splice(1, 1)
+        this.branch = branchContainer.length === 1 ? branchContainer[0] : ""
         this.path = paths.join('/')
     }
 
-    var availableHosts = [
+    const availableHosts = [
         'github.com'
     ]
 
@@ -36,7 +37,14 @@
     }
 
     Repository.prototype.sourcegraphURL = function () {
-        var url = 'https://sourcegraph.com'
-        return url + '/' + this.host + '/' + this.author + '/' + this.name + '@' + this.branch + '/-/' + this.path
+        const sourcegraph = 'https://sourcegraph.com'
+        let dst = sourcegraph + '/' + this.host + '/' + this.author + '/' + this.name
+        if (this.branch !== "") {
+            dst += '@' + this.branch
+        }
+        if (this.path !== "") {
+            dst += '/-/' + this.path
+        }
+        return dst
     }
 </script>
