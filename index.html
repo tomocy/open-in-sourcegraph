@@ -13,38 +13,40 @@
         event.target.browserWindow.activeTab.url = repository.sourcegraphURL()
     }
 
-    function Repository(url) {
-        this.parseURL(url)
-    }
-
-    Repository.prototype.parseURL = function (url) {
-        const parts = url.split('/')
-        this.host = parts[2]
-        this.author = parts[3]
-        this.name = parts[4]
-        const paths = parts.slice(5)
-        const branchContainer = paths.splice(1, 1)
-        this.branch = branchContainer.length === 1 ? branchContainer[0] : ""
-        this.path = paths.join('/')
-    }
-
     const availableHosts = [
         'github.com'
     ]
 
-    Repository.prototype.isAvailableOnSourcegraph = function () {
-        return availableHosts.includes(this.host)
-    }
+    class Repository {
+        constructor(url) {
+            this.parseURL(url)
+        }
 
-    Repository.prototype.sourcegraphURL = function () {
-        const sourcegraph = 'https://sourcegraph.com'
-        let dst = `${sourcegraph}/${this.host}/${this.author}/${this.name}`
-        if (this.branch !== "") {
-            dst += `@${this.branch}`
+        parseURL(url) {
+            const parts = url.split('/')
+            this.host = parts[2]
+            this.author = parts[3]
+            this.name = parts[4]
+            const paths = parts.slice(5)
+            const branchContainer = paths.splice(1, 1)
+            this.branch = branchContainer.length === 1 ? branchContainer[0] : ""
+            this.path = paths.join('/')
         }
-        if (this.path !== "") {
-            dst += `/-/${this.path}`
+
+        isAvailableOnSourcegraph() {
+            return availableHosts.includes(this.host)
         }
-        return dst
+
+        sourcegraphURL() {
+            const sourcegraph = 'https://sourcegraph.com'
+            let dst = `${sourcegraph}/${this.host}/${this.author}/${this.name}`
+            if (this.branch !== "") {
+                dst += `@${this.branch}`
+            }
+            if (this.path !== "") {
+                dst += `/-/${this.path}`
+            }
+            return dst
+        }
     }
 </script>
