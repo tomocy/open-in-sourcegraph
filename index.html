@@ -1,7 +1,5 @@
 <script>
-    safari.application.addEventListener('command', openInSourcegraph, false)
-
-    function openInSourcegraph(event) {
+    const openInSourcegraph = (event) => {
         if (event.command != 'open') {
             return
         }
@@ -12,6 +10,8 @@
         }
         event.target.browserWindow.activeTab.url = repository.sourcegraphURL()
     }
+
+    safari.application.addEventListener('command', openInSourcegraph, false)
 
     const availableHosts = [
         'github.com'
