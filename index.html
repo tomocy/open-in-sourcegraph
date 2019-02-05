@@ -38,12 +38,12 @@
 
     Repository.prototype.sourcegraphURL = function () {
         const sourcegraph = 'https://sourcegraph.com'
-        let dst = sourcegraph + '/' + this.host + '/' + this.author + '/' + this.name
+        let dst = `${sourcegraph}/${this.host}/${this.author}/${this.name}`
         if (this.branch !== "") {
-            dst += '@' + this.branch
+            dst += `@${this.branch}`
         }
         if (this.path !== "") {
-            dst += '/-/' + this.path
+            dst += `/-/${this.path}`
         }
         return dst
     }
